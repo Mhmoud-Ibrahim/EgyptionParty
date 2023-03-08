@@ -7,7 +7,7 @@ let closeBtn =$('.closeBtn')
 
 $(document).ready(function(){
     //start closing sidebar
-    sidebar.animate({left:-sidebarwidth})
+    sidebar.animate({left:-sidebarwidth},0)
     // start closing occordion
     $('.bodyone').hide();
     $('.bodytwo').hide();
@@ -27,16 +27,35 @@ closeBtn.click(function(){
 })
  //open and close ocurdion
 $('.headone').click(function(){
-    $('.bodyone').toggle(500);
+   if($('.bodyone').toggle(500)){
+  $('.bodytwo').hide(500);
+  $('.bodythree').hide(500);
+  $('.bodyfour').hide(500);
+   } 
 })
 $('.headtwo').click(function(){
-    $('.bodytwo').toggle(500);
+if($('.bodytwo').toggle(500)){
+    $('.bodyone').hide(500);
+    $('.bodythree').hide(500);
+    $('.bodyfour').hide(500); 
+}
+    ;
 })
 $('.headthree').click(function(){
-    $('.bodythree').toggle(500);
+   if($('.bodythree').toggle(500)){
+    $('.bodyone').hide(500);
+    $('.bodytwo').hide(500);
+    $('.bodyfour').hide(500);
+   }
+    
 })
 $('.headfour').click(function(){
-    $('.bodyfour').toggle(500);
+   if($('.bodyfour').toggle(500)){
+    $('.bodyone').hide(500);
+    $('.bodytwo').hide(500);
+    $('.bodythree').hide(500);
+   }
+    
 })
 // hide sidebat in scroll
 $(window).scroll(function(){
@@ -60,13 +79,12 @@ $(window).scroll(function(){
 
 function eventday(){
     const d = new Date();
-    let day = '26 D';
+    let day = d.getDate()+18;
     let hour = d.getHours();
     let menites = d.getMinutes();
     let second = d.getSeconds();
-  
-
-    document.getElementById('days').innerHTML =day;
+    console.log();
+    document.getElementById('days').innerHTML =day+"D";
     document.getElementById('hours').innerHTML = hour +"h";
     document.getElementById('mintes').innerHTML = menites+"m";
     document.getElementById('seconds').innerHTML = second+"s";
